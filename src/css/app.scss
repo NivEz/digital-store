@@ -1,0 +1,16 @@
+// app global css in SCSS form
+
+@import "inputs/inputs.css";
+
+
+:root {
+  --primary: #f6edd9;
+  --primary-hover: rgba(248, 197, 153, 0.55);
+  --secondary: rgba(245, 225, 199, 0.95);
+  --button: #d8ebef;
+  --red-price: rgb(236, 94, 94);
+  --links-hover: #1976D2;
+  --background: rgba(243, 163, 80, 0.11);
+}
+
+

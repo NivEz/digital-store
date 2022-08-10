@@ -1,0 +1,75 @@
+1. First we will have to initialize Firebase in our app.
+Importing:
+import firebase from "firebase/app"
+
+Firebase initializing:
+firebase.initializeApp({configurations})
+The config is an object that contains configuration like api key...
+The config can be found in the firebase console.
+
+* The initialization statement will be placed in the main.js (Vue) or in the boot/bootFileName.js (Quasar-CLI).
+* Don't forget to import the boot in the quasar.conf.js (only in Quasar-CLI).
+
+
+2. Firestore:
+After we initialized firebase we can access it's functionality.
+
+To get a collection we'll pass a query as an argument to the collection method:
+const colRef = firebase.firestore().collection('collection name here')
+When calling a collection the return value will be a CollectionReference.
+rl => CollectionReference
+
+Accessing a document with the CollectionReference:
+firebase.firestore().collection('collection name here').doc('doc name here')
+#Get a DocumentReference for the document within the collection at the specified path.
+If no path is specified, an automatically-generated unique ID will be used for the returned DocumentReference.
+rl => DocumentReference
+
+We also can access it with full path:
+firebase.firestore().doc('collectionName/docName')
+rl => DocumentReference
+
+* When accessing the documents inside the collection the return value is a DocumentReference.
+
+CollectionReference methods:
+firebase.firestore().collection('collection name here').add( {someData: 'val'} )
+#Add a new document to this collection with the specified data, assigning it a document ID automatically.
+rl => Promise (DocumentReference)
+
+* DocumentReference methods:
+DocumentReference.set() - Writes to the document referred to by this DocumentReference.
+If the document does not yet exist, it will be created. If you pass SetOptions, the provided data can be merged into an existing document.
+
+DocumentReference.update() - Updates fields in the document referred to by this DocumentReference.
+The update will fail if applied to a document that does not exist.
+
+DocumentReference.onSnapshot() - Attaches a listener for DocumentSnapshot events.
+You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks.
+
+DocumentReference.get() - Reads the document referred to by this DocumentReference.
+rv => Promise (DocumentSnapshot)
+
+
+firebase.firestore().collection('collection name here').get()
+#Executes the query and returns the results as a QuerySnapshot.
+rl => Promise (QuerySnapshot)
+
+
+Managing QuerySnapshot:
+Properties:
+firebase.firestore().collection('collection name here').get().docs
+#An array of all the documents in the QuerySnapshot.
+rl => Array (QueryDocumentSnapshot)
+
+Methods:
+const snapshot = firebase.firestore().collection('collection name here').get()
+snapshot.forEach((doc) => {
+  console.log(doc.id, '=>', doc.data());
+});
+#Enumerates all of the documents in the QuerySnapshot.
+
+
+# = reference from docs
+rl = return value
+docs:
+https://firebase.google.com/docs/reference/js/firebase.firestore

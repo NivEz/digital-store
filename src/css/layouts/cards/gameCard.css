@@ -1,0 +1,50 @@
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.box {
+  flex-basis: 20%;
+}
+
+.favorite {
+  float: right;
+  margin-top: 3%;
+  margin-right: 3%;
+  cursor: pointer;
+}
+
+.my-card {
+  position: relative;
+}
+
+.buy-now {
+  /*float: right;*/
+}
+
+
+.product-name {
+  font-size: medium;
+}
+
+.product-sale-price {
+  font-size: large;
+  margin-right: 1em;
+}
+
+.product-original-price {
+  font-size: medium;
+  text-decoration: line-through;
+  color: rgba(250, 65, 65, 0.9);
+}
+
+@media screen and (max-width: 600px){
+
+  .flex-container{
+    justify-content: center;
+  }
+
+  .box {
+    flex-basis: 100%;
+  }
+}
